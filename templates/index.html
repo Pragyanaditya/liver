@@ -1,26 +1,25 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>webapp 1</title>
-    <style>
-        .container {
-                    display: grid;
-                    place-content: center;
-                    width: 100vw;
-                    height: 100vh;
-                    background-color: ghostwhite;
+{% include "base.html" %}
+{% block css %}
+<style>
 
-        }
-    </style>
-</head>
-<body>
-    <div class="container">
-        <h1>My web app</h1>
+</style>
+{% endblock %}
+{% block content %}
 
-        <img src="" alt="">
+<div class="container">
+    <div class="row">
+        <div class="col my-5">
+            <div class="p-5 mb-4 bg-light rounded-3">
+                <div class="container-fluid py-5">
+                  <h1 class="display-5 fw-bold">Liver Disease prediction</h1>
+                  <p class="col-md-8 fs-4">Using a series of utilities, you can create this jumbotron, just like the one in previous versions of Bootstrap. Check out the examples below for how you can remix and restyle it to your liking.</p>
+                  <a class="btn btn-primary btn-lg" href="/form">Enter Patient Data</a>
+                </div>
+              </div>
+        </div>
     </div>
-</body>
-</html>
+</div>
+
+{% endblock %}
+{% block js %}{% endblock %}
+

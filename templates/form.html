@@ -1,0 +1,96 @@
+{% include "base.html" %}
+{% block css %}
+<style>
+	
+</style>
+{% endblock %}
+{% block content %}
+
+<div class="container">
+	<br>
+	<!--Form-->
+	<form action = "{{url_for('predict')}}" method ="POST" >
+		<fieldset>
+			
+			<div class="card card-body" >
+				<div class="form-group  row">
+					<div class="col-sm-3">
+						<label for="name">Name of the Patient</label>
+						<input type="text" class="form-control" id="name" name="name" required>
+					</div>
+					<div class="col-sm-3">
+						<label for="sex">Gender</label>
+						<select class="form-control" id="sex"  name="sex" required>
+							<option disabled selected value> -- Select an Option -- </option>
+							<option value = "0">Male</option>
+							<option value = "1">Female</option>
+						</select>
+					</div>
+				</div>
+				<div class="form-group  row">
+					<div class="col-sm">
+						<label for="cp">Age of the patient</label>
+						<input type="number" class="form-control" id="age" name="age"  required>
+					</div>
+				</div>
+				
+				<br>
+				<div class="form-group  row">
+					<div class="col-sm">
+						<label for="cp">Total Bilirubin</label>
+						<input type="number" class="form-control" id="trest" name="trest"  required>
+					</div>
+					<div class="col-sm">
+						<label for="trestbps">Direct Bilirubin</label>
+						<input type="number" class="form-control" id="trestbps" name="trestbps"  required>
+					</div>
+					<div class="col-sm">
+						<label for="chol">Alkaline Phosphatase</label>
+						<input type="number" class="form-control" id="chol" name="chol" required>
+					</div>
+					<div class="col-sm">
+						<label for="fbs">Sgpt Alamine Aminotransferase</label>
+						<input type="number" class="form-control" id="c" name="c" required>
+					</div>
+					
+					<div class="form-group row">
+						<div class="col-sm">
+							<label for="restecg">Sgot Aspartate_Aminotransferase </label>
+							<input type="number" class="form-control" id="ch" name="ch" required>
+						</div>
+						<div class="col-sm">
+							<label for="thalach">Total_Proteins</label>
+							<input type="number" class="form-control" id="thalach" name="thalach" required>
+						</div>
+						<div class="col-sm">
+							<label for="exang">Albumin</label>
+							<input type="number" step="any" class="form-control" id="exang" name="exang" required>
+						</div>
+						<div class="col-sm">
+							<label for="exang">Albumin_and_Globulin_Ratio </label>
+							<input type="number" step="any" class="form-control" id="exa" name="exa" required>
+						</div>
+						<div class="col-sm">
+							<label for="ratio">A/G Ratio Albumin and Globulin Ratio
+							</label>
+							<input type="number" step="any" class="form-control" id="ratio" name="ratio" required>
+						</div>
+					</div>
+					<div class="form-group">
+						<input class="btn btn-primary" type="submit" value="Result">
+					</div>
+					
+					<!--Prediction Result-->
+					<div id ="result">
+						<strong style="color:red">{{result}}</strong>
+					</div>
+				</div>
+			</div>
+		</fieldset>
+	</form>
+	
+</div>
+
+{% endblock %}
+{% block js %}{% endblock %}
+
