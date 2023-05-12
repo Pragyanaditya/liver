@@ -1,96 +1,138 @@
-{% include "base.html" %}
+
+{% extends "base.html" %}
 {% block css %}
 <style>
-	
+	form {
+		display: grid;
+		place-content: center;
+	}
+
 </style>
 {% endblock %}
-{% block content %}
+{% block body %}
 
-<div class="container">
-	<br>
-	<!--Form-->
-	<form action = "{{url_for('predict')}}" method ="POST" >
-		<fieldset>
-			
-			<div class="card card-body" >
-				<div class="form-group  row">
-					<div class="col-sm-3">
-						<label for="name">Name of the Patient</label>
-						<input type="text" class="form-control" id="name" name="name" required>
-					</div>
-					<div class="col-sm-3">
-						<label for="sex">Gender</label>
-						<select class="form-control" id="sex"  name="sex" required>
-							<option disabled selected value> -- Select an Option -- </option>
-							<option value = "0">Male</option>
-							<option value = "1">Female</option>
-						</select>
-					</div>
-				</div>
-				<div class="form-group  row">
-					<div class="col-sm">
-						<label for="cp">Age of the patient</label>
-						<input type="number" class="form-control" id="age" name="age"  required>
-					</div>
-				</div>
-				
-				<br>
-				<div class="form-group  row">
-					<div class="col-sm">
-						<label for="cp">Total Bilirubin</label>
-						<input type="number" class="form-control" id="trest" name="trest"  required>
-					</div>
-					<div class="col-sm">
-						<label for="trestbps">Direct Bilirubin</label>
-						<input type="number" class="form-control" id="trestbps" name="trestbps"  required>
-					</div>
-					<div class="col-sm">
-						<label for="chol">Alkaline Phosphatase</label>
-						<input type="number" class="form-control" id="chol" name="chol" required>
-					</div>
-					<div class="col-sm">
-						<label for="fbs">Sgpt Alamine Aminotransferase</label>
-						<input type="number" class="form-control" id="c" name="c" required>
-					</div>
-					
-					<div class="form-group row">
-						<div class="col-sm">
-							<label for="restecg">Sgot Aspartate_Aminotransferase </label>
-							<input type="number" class="form-control" id="ch" name="ch" required>
-						</div>
-						<div class="col-sm">
-							<label for="thalach">Total_Proteins</label>
-							<input type="number" class="form-control" id="thalach" name="thalach" required>
-						</div>
-						<div class="col-sm">
-							<label for="exang">Albumin</label>
-							<input type="number" step="any" class="form-control" id="exang" name="exang" required>
-						</div>
-						<div class="col-sm">
-							<label for="exang">Albumin_and_Globulin_Ratio </label>
-							<input type="number" step="any" class="form-control" id="exa" name="exa" required>
-						</div>
-						<div class="col-sm">
-							<label for="ratio">A/G Ratio Albumin and Globulin Ratio
-							</label>
-							<input type="number" step="any" class="form-control" id="ratio" name="ratio" required>
-						</div>
-					</div>
-					<div class="form-group">
-						<input class="btn btn-primary" type="submit" value="Result">
-					</div>
-					
-					<!--Prediction Result-->
-					<div id ="result">
-						<strong style="color:red">{{result}}</strong>
-					</div>
-				</div>
-			</div>
-		</fieldset>
-	</form>
+<form method="post" class="my-5">
+	<div class="form-floating mb-3">
+	  <input
+		type="date"
+		class="form-control" name="age" id="age" placeholder="Age of patient">
+	  <label for="name">age of Patient</label>
+	</div>
+	<div class="form-floating mb-3">
+	  <input
+		type="text"
+		class="form-control" name="Name" id="Name" placeholder="Name of patient">
+	  <label for="Name">Name</label>
+	</div>
+
+	<div class="mb-3">
+		<label for="gender" class="form-label">Gender</label>
+		<select class="form-select form-select-lg" name="gender" id="gender">
+			<option selected disabled>Select one</option>
+			<option value="male">Male</option>
+			<option value="female">Female</option>
+		</select>
+	</div>
+	<div class="form-floating mb-3">
+	  <input
+		type="text"
+		class="form-control" name="Total Bilirubin" id="Total Bilirubin" placeholder="Total Bilirubin">
+	  <label for="Total Bilirubin">Total Bilirubin</label>
+	</div>
+
+	<div class="form-floating mb-3">
+	  <input
+		type="text"
+		class="form-control" name="Direct Bilirubin" id="Direct Bilirubin" placeholder="Direct Bilirubin">
+	  <label for="Direct Bilirubin">Direct Bilirubin</label>
+	</div>
+
+	<div class="form-floating mb-3">
+	  <input
+		type="text"
+		class="form-control" name="Alkphos Alkaline Phosphotase" id="Alkphos Alkaline Phosphotase" placeholder="Alkphos Alkaline Phosphotase">
+	  <label for="Alkphos Alkaline Phosphotase">Alkphos Alkaline Phosphotase</label>
+	</div>
 	
-</div>
+	<div class="form-floating mb-3">
+	  <input
+		type="text"
+		class="form-control" name="Sgpt Alamine Aminotransferase" id="Sgpt Alamine Aminotransferase" placeholder="Sgpt Alamine Aminotransferase">
+	  <label for="Sgpt Alamine Aminotransferase">Sgpt Alamine Aminotransferase</label>
+	</div>
+
+	<div class="form-floating mb-3">
+	  <input
+		type="text"
+		class="form-control" name="Sgot Aspartate Aminotransferase" id="Sgot Aspartate Aminotransferase" placeholder="Sgot Aspartate Aminotransferase">
+	  <label for="Sgot Aspartate Aminotransferase">Sgot Aspartate Aminotransferase</label>
+	</div>
+	
+	<div class="form-floating mb-3">
+	  <input
+		type="text"
+		class="form-control" name="Total Protiens" id="Total Protiens" placeholder="Total Protiens">
+	  <label for="Total Protiens">Total Protiens</label>
+	</div>
+	
+	<div class="form-floating mb-3">
+	  <input
+		type="text"
+		class="form-control" name="ALB Albumin" id="ALB Albumin" placeholder="ALB Albumin">
+	  <label for="ALB Albumin">ALB Albumin</label>
+	</div>
+	
+	<div class="form-floating mb-3">
+	  <input
+		type="text"
+		class="form-control" name="A/G Ratio Albumin and Globulin Ratio" id="A/G Ratio Albumin and Globulin Ratio" placeholder="A/G Ratio Albumin and Globulin Ratio">
+	  <label for="A/G Ratio Albumin and Globulin Ratio">A/G Ratio Albumin and Globulin Ratio</label>
+	</div>
+	
+	
+	
+	<input type="submit" value="Predict">
+</form>
 
 {% endblock %}
-{% block js %}{% endblock %}
+{% block js %}
+<script>
+	// Get the form element
+	var form = document.querySelector('form');	
+	// Add an event listener for form submission
+	form.addEventListener('submit', function(e) {
+		// Prevent the default form submission behavior
+		e.preventDefault();
+		
+		// Get the form data
+		var age = document.getElementById('age').value;
+		var gender = document.getElementById('gender').value;
+		var totalBilirubin = document.getElementById('tbil').value;
+		var directBilirubin = document.getElementById('dbil').value;
+		var alkphos = document.getElementById('alkphos').value;
+		var sgpt = document.getElementById('sgpt').value;
+		var sgot = document.getElementById('sgot').value;
+		var totalProtiens = document.getElementById('tp').value;
+		var alb = document.getElementById('alb').value;
+		var agRatio = document.getElementById('agr').value;
+		var result = document.getElementById('result').value;
+		
+		// Do something with the form data (e.g. send it to a server)
+		console.log('Age: ' + age);
+		console.log('Gender: ' + gender);
+		console.log('Total Bilirubin: ' + totalBilirubin);
+		console.log('Direct Bilirubin: ' + directBilirubin);
+		console.log('Alkphos: ' + alkphos);
+		console.log('Sgpt: ' + sgpt);
+		console.log('Sgot: ' + sgot);
+		console.log('Total Protiens: ' + totalProtiens);
+		console.log('ALB: ' + alb);
+		console.log('A/G Ratio: ' + agRatio);
+		console.log('Result: ' + result);
+		
+		// Clear the form inputs
+		form.reset();
+	});
+</script>
+{% endblock %}
 

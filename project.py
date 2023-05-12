@@ -15,18 +15,18 @@ def predict():
     if request.method == 'POST':
         name = request.form.get('name')
         age = request.form.get('age')
-        sex = request.form.get('sex')
-        trest = request.form.get('trest')
-        trestbps = request.form.get('trestbps')
-        chol = request.form.get('chol')
-        c = request.form.get('c')
-        ch = request.form.get('ch')
-        thalach = request.form.get('thalach')
-        exang = request.form.get('exang')
-        exa = request.form.get('exa')
+        gender = request.form.get('gender')
+        tb = request.form.get('tb')
+        db = request.form.get('db')
+        aap = request.form.get('aap')
+        sgpt = request.form.get('sgpt')
+        sgot = request.form.get('sgot')
+        tp = request.form.get('tp')
+        alb = request.form.get('alb')
         ratio = request.form.get('ratio')
+        res = request.form.get('result')
 
-        result = predict(age, sex, trest, trestbps, chol, c, ch, thalach, exang, exa, ratio)
+        result = predict(age, gender, tb, db, aap, sgpt, sgot, tb, alb, ratio, res)
         if result == 0:
             flash('result is 0', 'success')
         else:
