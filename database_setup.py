@@ -59,7 +59,24 @@ class Profile(Base):
         return self.user.name
 
 class Patient(Base):
-    pass
+    __tablename__ = 'patients'
+    id = Column(Integer, primary_key=True)
+    age = Column(Integer, nullable=False)   
+    total_bilirubin = Column(Float, nullable=False) 
+    direct_bilirubin = Column(Float, nullable=False)
+    alkphos_alkaline_phosphotase = Column(Float, nullable=False)
+    sgpt_alamine_aminotransferase = Column(Float, nullable=False)
+    sgot_aspartate_aminotransferase = Column(Float, nullable=False)
+    total_protiens = Column(Float, nullable=False)
+    alb_albumin = Column(Float, nullable=False)
+    a_g_ratio_albumin_and_globulin_ratio = Column(Float, nullable=False)
+    result = Column(Integer)
+
+    
+    created_at = Column(DateTime, default=datetime.now)
+    updated_at = Column(DateTime, default=datetime.now, onupdate=datetime.now)
+
+    
 
 
 def opendb():

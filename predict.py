@@ -4,11 +4,10 @@ It contains the routes and views for the application.
 '''
 
 from flask import Flask, render_template, request, redirect, url_for, session, flash, jsonify
-from database import opendb, DB_URL
-from database import User, Profile, Product
+from database_setup import opendb, DB_URL
+from database_setup import User, Profile, Product
 from db_helper import *
 from validators import *
-from logger import log
 from werkzeug.utils import secure_filename
 import os
 
